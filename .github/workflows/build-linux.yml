@@ -253,7 +253,7 @@ jobs:
         chmod +x appimagetool
 
         export APPIMAGE_EXTRACT_AND_RUN=1
-        ./appimagetool "${appdir}" "output/${appimage_name}"
+        ./appimagetool --appimage-extract-and-run "${appdir}" "output/${appimage_name}"
 
         echo "AppImage created: output/${appimage_name}"
 
