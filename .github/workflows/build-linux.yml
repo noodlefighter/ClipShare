@@ -40,6 +40,7 @@ jobs:
           jq \
           libgtk-3-dev \
           liblzma-dev \
+          curl \
           locate \
           rpm \
           patchelf \
@@ -47,6 +48,14 @@ jobs:
           libkeybinder-3.0-dev \
           fuse \
           libfuse-dev
+
+    - name: Install Wayland protocol extension
+      run: |
+        mkdir -p /usr/share/wayland-protocols/staging/ext-data-control
+        curl -fsSL \
+          https://raw.githubusercontent.com/wayland-mirror/wayland-protocols/d5aed4e4903a77aefaef03359d1ffdc0d5093456/staging/ext-data-control/ext-data-control-v1.xml \
+          -o /usr/share/wayland-protocols/staging/ext-data-control/ext-data-control-v1.xml
+        test -s /usr/share/wayland-protocols/staging/ext-data-control/ext-data-control-v1.xml
 
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -125,6 +134,14 @@ jobs:
           fuse \
           libfuse2 \
           patchelf
+
+    - name: Install Wayland protocol extension
+      run: |
+        mkdir -p /usr/share/wayland-protocols/staging/ext-data-control
+        curl -fsSL \
+          https://raw.githubusercontent.com/wayland-mirror/wayland-protocols/d5aed4e4903a77aefaef03359d1ffdc0d5093456/staging/ext-data-control/ext-data-control-v1.xml \
+          -o /usr/share/wayland-protocols/staging/ext-data-control/ext-data-control-v1.xml
+        test -s /usr/share/wayland-protocols/staging/ext-data-control/ext-data-control-v1.xml
 
     - name: Checkout repository
       uses: actions/checkout@v4
